@@ -17,27 +17,28 @@ ActiveRecord::Schema.define(version: 2021_05_10_200022) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.bigint "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_categories_on_menu_id"
   end
 
   create_table "dishes", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.float "price"
-    t.bigint "categories_id"
+    t.bigint "sub_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["categories_id"], name: "index_dishes_on_categories_id"
+    t.index ["sub_category_id"], name: "index_dishes_on_sub_category_id"
   end
 
-  create_table "menus", force: :cascade do |t|
+  create_table "sub_categories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_sub_categories_on_category_id"
   end
 
-  add_foreign_key "categories", "menus"
-  add_foreign_key "dishes", "categories", column: "categories_id"
+  add_foreign_key "dishes", "sub_categories"
+  add_foreign_key "sub_categories", "categories"
 end
