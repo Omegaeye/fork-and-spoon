@@ -1,10 +1,10 @@
 <h1><%= @menu.name.titleize %></h1>
 
-<% @menu.each do |subcat|%>
-    <h2><%subcat.name%></h2>
-    <%subcat.dishes.each do |dish|%>
-    <%dish.name%>
-    <%dish.description%>
-    <%dish.price%>
+<% @menu.sub_categories.each do |subcat|%>
+    <h2><%= subcat.name%></h2>
+    <%subcat.dishes.each do |dish|%><br>
+    <%= dish.name%><br>
+    <%= dish.description%><br>
+    <%= dish.price%><br>
     <%end%>
 <%end%>
