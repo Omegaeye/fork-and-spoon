@@ -1,3 +1,6 @@
 class Category < ApplicationRecord
-    belongs_to :menu
+    has_many :sub_categories
+    validates :name, presence: true
+    
+    
 end

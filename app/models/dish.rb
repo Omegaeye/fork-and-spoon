@@ -1,4 +1,5 @@
 class Dish < ApplicationRecord
-    belongs_to :menu
-    belongs_to :category
+    belongs_to :sub_category
+    validates :name, presence: true
+    validates :price, presence: true
 end
